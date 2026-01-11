@@ -1,5 +1,9 @@
 pipeline {
     agent any
+
+    tools {
+        nodejs 'node'
+    }
     
     triggers {
         // Runs at 2 AM every night
@@ -12,6 +16,12 @@ pipeline {
     }
 
     stages {
+        stage('Checkou') {
+            steps {
+                checkout scm
+            }
+        }
+        
         stage('Decrypt & Install') {
             steps {
                 // Decrypt the .env file
