@@ -16,12 +16,12 @@ pipeline {
     }
 
     stages {
-        stage('Checkou') {
+        stage('Checkout') {
             steps {
                 checkout scm
             }
         }
-        
+
         stage('Decrypt & Install') {
             steps {
                 // Decrypt the .env file
@@ -34,7 +34,7 @@ pipeline {
         stage('Execution') {
             steps {
                 // Run tests with 4 shards for speed
-                sh 'npx playwright test --shard=${SHARD_NUM}/4'
+                sh 'npx playwright test'
             }
         }
     }
