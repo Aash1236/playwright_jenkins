@@ -22,7 +22,7 @@ pipeline {
                 // Decrypt the .env file
                 sh "gpg --batch --yes --decrypt --passphrase $ENV_PASS --output .env .env.gpg"
                 sh 'npm ci'
-                sh 'npx playwright install --with-deps'
+                sh 'npx playwright install'
             }
         }
         
